@@ -17,7 +17,8 @@ ATTACH DATABASE "C:\Users\jctor\EXTERNAL-PROGRAMS\sqlite-tools-win32-x86-3380500
 .schema chinook.albums
 .schema tb_budget_history
 
-
+-- SORTIR DE SQLITE CLIENT
+.exit
 
 CREATE TABLE IF NOT EXISTS tb_budget_history (
     _id INTEGER PRIMARY KEY ,
@@ -79,6 +80,10 @@ SELECT tb_monthly_tables.comment,tb_budget_history.name,tb_budget_history.amount
 --OUTER JOIN
 SELECT tb_monthly_tables.comment,tb_budget_history.name,tb_budget_history.amount,tb_budget_history.year_month FROM tb_monthly_tables LEFT OUTER JOIN tb_budget_history ON tb_monthly_tables.year_month ="2020-05";
 
+
+SELECT * FROM tb_monthly_tables 
+    LEFT OUTER JOIN tb_budget_history ON tb_monthly_tables.year_month =tb_budget_history.year_month
+ WHERE tb_monthly_tables.year_month = "2020-05";
 
 -- DROP UNE TABLE
 DROP TABLE tb_budget_history;
