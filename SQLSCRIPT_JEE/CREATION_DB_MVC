@@ -1,0 +1,42 @@
+#CREATE  DB FROM OUTSIDE SQLITE  CLI
+#run on powershell
+sqlite3.exe ./base_production
+-- display current session databses
+.databases
+
+
+
+
+#************************Suprimer le tableau1*****************************
+#DROP:commande qui permet la supression d'un tableau ou  base 
+DROP TABLE tableau1;
+
+
+#VERSION 2 Creation tableau1 FINAL selon la feuille excel 
+CREATE TABLE IF NOT EXISTS tableau1(
+id INTEGER PRIMARY KEY UNIQUE,
+datetimes DATETIME NOT NULL,
+reference VARCHAR(20) NOT NULL,
+nom VARCHAR(20) NOT NULL ,
+tr DOUBLE (8,4) NOT NULL ,
+arret1 DOUBLE(8,4) ,
+arret2 DOUBLE(8,4),
+nb INT,
+nr INT,
+tnet DOUBLE(8,4) ,
+tu DOUBLE(8,4)
+);
+
+
+
+INSERT INTO tableau1(datetimes,reference,nom,tr,arret1,arret2,nb,nr,tnet,tu)
+VALUES(datetime('now','-2 day') ,'ref1','henriettte',10,4,3,50,4,0.918,0.85),
+(datetime('now','-2 day'),'ref1','henriettte',8,0.2,0.1,30,2,0.544,0.51),
+(datetime('now','-2 day'),'ref2','henriettte',7,0.1,0.1,35,1,0.63,0.6125),
+(datetime('now','-2 day'),'ref2','carlos',7,0.1,0.1,35,1,0.63,0.6125),
+(datetime('now','-2 day'),'ref3','carlos',6,1,1,40,2,1.0584,1.008);
+
+#SELECT OPTIONS
+Select * from tableau1;
+SELECT nom,tr FROM tableau1 WHERE tr >7 ORDER BY tr ASC ;
+SELECT nom,tr FROM tableau1 WHERE tr >7 ORDER BY tr DESC ;
