@@ -22,6 +22,12 @@ DETACH DATABASE 'test';
 .schema albums
 .schema chinook.albums
 
+--#INSERT NEW ENTRY WITH PARTIAL VALUES(FOR THE ONEW ALLOWED NULL)
+INSERT INTO contacts (contact_id,first_name,last_name,email,phone,address,description )VALUES(99999,"johny","hallyday","hey@titi.com","555",NULL,NULL);
+--OR INSERT DECLARING ONLY THE 5 NOT NULL ELEMENTS
+INSERT INTO contacts (contact_id,first_name,last_name,email,phone )VALUES(77777,"johny","Presley","mario@titi.com","333");
+
+
 -- #NULL VALUE
 INSERT INTO contacts (contact_id,first_name,last_name,email,phone) VALUES( 1237217,"carlos" ,"torres","toto15777@gmail.fr","12452677");
 --#NOT NULL VALUE
@@ -45,7 +51,7 @@ INSERT INTO tb_task2 (title,priority,description) VALUES( "aller faire vaccin",1
 INSERT INTO tb_task4 (title,priority,description,status ) VALUES( "aller faire vaccin",1 ,"aller faire un vaccin au labo en couple","finished");
 INSERT INTO tb_task4 (title,priority,description,status ) VALUES( "aller faire vaccin3",2 ,"aller faire un vaccin au labo en couple2","unfinished");
 -- UPDATE STATEMENT 
--- UPDATE contact table
+-- UPDATE partial entry from contact table
 UPDATE contacts SET first_name ="richard" WHERE contact_id =99;
 
 
@@ -122,6 +128,14 @@ CREATE TABLE chinook.supplier_groups (
 	group_id integer PRIMARY KEY,
 	group_name text NOT NULL
 );
+
+--#ALTER TABLE
+--MODIFIER UNE TABLE EXISTANT POUR AJOUTER UNE COLONNE
+ALTER TABLE contacts 
+ADD COLUMN address TEXT;
+
+ALTER TABLE contacts
+ADD COLUMN description TEXT;
 
 -- DROP UNE TABLE
 DROP TABLE chinook.suppliers;
