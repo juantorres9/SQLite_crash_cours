@@ -2,7 +2,7 @@
 .databases
 -- attach databse on current session
 ATTACH DATABASE "c:\sqlite\db\chinook.db" AS chinook;
-ATTACH DATABASE "c:\sqlite\db\TEST_NAMES" AS TEST_NAMES;
+ATTACH DATABASE "C:\Users\jctor\WORKSPACE-LANGUAGES\SQL-Projects\DB\TEST_NAMES" AS TEST_NAMES;
 ATTACH DATABASE "c:\sqlite\db\TASK_APK_DB" AS TASK_APK_DB;
 -- show all tables of an specific database
 .tables

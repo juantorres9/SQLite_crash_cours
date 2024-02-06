@@ -23,7 +23,7 @@ DETACH DATABASE 'test';
 .schema chinook.albums
 
 -- #NULL VALUE
-INSERT INTO contacts (contact_id,first_name,last_name,email,phone) VALUES( 99,"carlos" ,"torres","toto@gmail.fr","");
+INSERT INTO contacts (contact_id,first_name,last_name,email,phone) VALUES( 1237217,"carlos" ,"torres","toto15777@gmail.fr","12452677");
 --#NOT NULL VALUE
 INSERT INTO contacts (contact_id,first_name,last_name,email,phone) VALUES( 99,"carlos" ,"torres","toto@gmail.fr","12345");
 INSERT INTO contacts (contact_id,first_name,last_name,email,phone) VALUES( 100,"TOTO" ,"TITI","tot2o@gmail.fr","123456789");
@@ -45,6 +45,10 @@ INSERT INTO tb_task2 (title,priority,description) VALUES( "aller faire vaccin",1
 INSERT INTO tb_task4 (title,priority,description,status ) VALUES( "aller faire vaccin",1 ,"aller faire un vaccin au labo en couple","finished");
 INSERT INTO tb_task4 (title,priority,description,status ) VALUES( "aller faire vaccin3",2 ,"aller faire un vaccin au labo en couple2","unfinished");
 -- UPDATE STATEMENT 
+-- UPDATE contact table
+UPDATE contacts SET first_name ="richard" WHERE contact_id =99;
+
+
 UPDATE tb_task2 SET title="Demande congé",priority=1,description="faire une demande de congé a cibest "WHERE _id=3;
 -- UPDATE MULTIPLE ROWS 
 UPDATE tb_task2 SET title="Demande congé2",priority=1,description="faire une demande de congé a cibest " WHERE priority=1;
@@ -153,8 +157,32 @@ SELECT _id,title,priority,description,status FROM tb_task4 WHERE status!= "unfin
 SELECT _id,title,priority,description,status FROM tb_task4 WHERE status= "unfinished" ORDER BY priority DESC;
 SELECT _id,title,priority,description,status FROM tb_task4 WHERE status= "unfinished" ORDER BY priority ASC;
 SELECT * FROM tb_task4 WHERE status= "unfinished" ORDER BY priority ASC;
+
+
+-- SELECT DISTICT from contact table to avoid DUPLICATE
+--DISTICT APPLIED TO A SINGLE COLUMN(last_name)
+SELECT DISTINCT last_name FROM contacts ORDER BY last_name ;
+
+--DISTICT APPLIED TO A COUPLE UNDIVISIONAL(first_name and last_name)
+SELECT DISTINCT first_name,last_name FROM contacts ORDER BY last_name  ;
 -- rowid implicit alias
 https://www.sqlitetutorial.net/sqlite-primary-key/
+
+
+-- GROUP BY SQL
+SELECT first_name,last_name,phone  
+FROM contacts  
+GROUP BY first_name ,last_name
+ORDER BY last_name;
+
+
+--GROUPE BY RETRIEVING THE UNIQUE VALUE WITH MAX PHONE NUMBER AMONG THE POSIBBLE CANDIDATES
+SELECT first_name,last_name,MAX(phone) as phoneM
+FROM contacts 
+GROUP BY first_name ,last_name 
+ORDER BY last_name;
+
+
 
 -- activation de clès extrange -> foreign keys
 PRAGMA foreign_keys=ON;
